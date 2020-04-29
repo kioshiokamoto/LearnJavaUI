@@ -1,46 +1,65 @@
 package codigo;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionAdapter;
 
+import static java.awt.Component.RIGHT_ALIGNMENT;
+
 public class calculadora extends JFrame {
     private JPanel p1, pResult,pBotones;
-    private JLabel bSalir,bMinimizar,lResultado,lOperado;
+    private JLabel bSalir,bMinimizar,lResultado,lOperado,lTitulo;
     private JButton boton[] = new JButton[35];
     int xx,xy;
     public calculadora(){
         this.setSize(420,685);
         this.setLocationRelativeTo(null);
         this.setUndecorated(true);
+        this.setResizable(false);
         this.setLayout(new BoxLayout(getContentPane(),BoxLayout.Y_AXIS));
-        setVisible(true);
+
         paneles();
-        this.pack();
+        pack();
+        setVisible(true);
+
 
     }
     public void paneles(){
         p1= new JPanel();
         p1.setBackground(new Color(50, 50, 50));
         p1.setSize(420,40);
-        p1.setLayout(null);
+        p1.setLayout(new BoxLayout(p1,BoxLayout.LINE_AXIS));            //Se alineara de manera horizontal
+        p1.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT); //Indica q se alinee de derecha a izq
+        p1.setPreferredSize(new Dimension(420,40));
+        p1.setMinimumSize(new Dimension(420,40));
+        p1.setMaximumSize(new Dimension(420,40));
         panelSup();
-        this.getContentPane().add(p1);
+        this.add(p1);
+
         pResult = new JPanel();
         pResult.setBackground(new Color(81, 82, 82));
-        pResult.setSize(420,200);
-        this.getContentPane().add(pResult);
+        pResult.setSize(420,100);
+        pResult.setLayout(null);
+
+        pResult.setPreferredSize(new Dimension(420,100));
+        pResult.setMinimumSize(new Dimension(420,100));
+        pResult.setMaximumSize(new Dimension(420,100));
+        panelResultado();
+        this.add(pResult);
 
         pBotones = new JPanel();
         pBotones.setBackground(new Color(52, 52, 52));
         pBotones.setSize(420,445);
-        //pBotones.setSize(420,445);
-        //panelBotones();
+        pBotones.setPreferredSize(new Dimension(420,445));
+        pBotones.setMinimumSize(new Dimension(420,445));
+        pBotones.setMaximumSize(new Dimension(420,445));
 
-        this.getContentPane().add(pBotones);
+        panelBotones();
+        this.add(pBotones);
 
 
     }
@@ -57,6 +76,13 @@ public class calculadora extends JFrame {
         p1.add(bMinimizar);
         bMinimizar.setVisible(true);
         bSalir.setVisible(true);
+        lTitulo = new JLabel("Calculadora - Kioshi Okamoto                      ");
+        lTitulo.setSize(300,30);
+        p1.add(lTitulo);
+        lTitulo.setVisible(true);
+        lTitulo.setFont(new Font("Gotham",Font.PLAIN,18));
+        lTitulo.setForeground(new Color(161, 162, 163));
+
         bSalir.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -127,10 +153,23 @@ public class calculadora extends JFrame {
         });
     }
     public void panelResultado(){
+        lOperado = new JLabel("TEST");
+        pResult.add(lOperado);
+        lOperado.setBounds(270,20,130,24);
+        lOperado.setHorizontalAlignment(SwingConstants.RIGHT);
+        lOperado.setFont(new Font("Gotham",Font.PLAIN,24));
+        lOperado.setForeground(new Color(161, 162, 163));
+
+        lResultado = new JLabel("TEST");
+        pResult.add(lResultado);
+        lResultado.setBounds(270,45,130,36);
+        lResultado.setHorizontalAlignment(SwingConstants.RIGHT);
+        lResultado.setFont(new Font("Gotham",Font.BOLD,36));
+        lResultado.setForeground(new Color(223, 224, 224));
 
     }
     public void panelBotones(){
-        pBotones.setLayout(new GridLayout(5,7));
+        pBotones.setLayout(new GridLayout(7,5));
         creaBotones();
         for(int i=0;i<boton.length;i++){
             pBotones.add(boton[i]);
@@ -143,6 +182,14 @@ public class calculadora extends JFrame {
     public void creaBotones(){
         for(int i=0; i<boton.length;i++){
             boton[i]=new JButton();
+            boton[i].setBackground(new Color(51, 51, 51));
+            boton[i].setFont(new Font("Gotham",Font.PLAIN,18));
+            boton[i].setForeground(new Color(223, 224, 224));
+            boton[i].setFocusable(true);
+            boton[i].setBorder(BorderFactory.createLineBorder(new Color(73, 73, 73)));
+            if(i>=16 && i<=18 || i>=21 && i<=23 || i>=26 && i<=28){
+                boton[i].setBackground(new Color(38, 38, 39));
+            }
         }
         boton[0].setText("2do");
         boton[1].setText("π");
