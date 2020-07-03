@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="BDMUESTRAS@localhost" uuid="75173916-2ae3-48e3-b574-d3a9cc3c458e">
+      <driver-ref>sqlserver.jtds</driver-ref>
+      <synchronize>true</synchronize>
+      <remarks>Test base de datos</remarks>
+      <jdbc-driver>net.sourceforge.jtds.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:jtds:sqlserver://localhost:1433/BDMUESTRAS;instance=MSSQLSERVER</jdbc-url>
+    </data-source>
+  </component>
+</project>

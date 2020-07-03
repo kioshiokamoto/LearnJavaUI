@@ -7,8 +7,14 @@ public class main {
         SwingUtilities.invokeLater(new Runnable(){
             @Override
             public void run() {
+
                 calculadora c1 = new calculadora();
+
+
             }
+
         });
     }
 }
+
+

@@ -175,9 +175,7 @@ public class calculadora extends JFrame {
             pBotones.add(boton[i]);
 
         }
-
-
-
+        
     }
     public void creaBotones(){
         for(int i=0; i<boton.length;i++){
